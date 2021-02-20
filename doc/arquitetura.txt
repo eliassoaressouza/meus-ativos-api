@@ -1,0 +1,36 @@
+
+https://dev.to/bendix/applying-domain-driven-design-principles-to-a-nest-js-project-5f7b
+src/
+    /API
+        /Usuario
+            UserController.ts
+            CreateUserDTO.ts
+        APIModule.ts
+
+
+
+    /Autenticacao
+        AuthModule.ts
+    /Database
+        DatabaseModule.ts
+    /Model
+        /User
+            CreateUser.ts
+            IUserRepository.ts
+            User.ts
+            UserModule.ts
+    /Repository
+        /User
+            UserRepository.ts
+            UserRepositoryModule.ts
+            UserEntity.ts
+    /Utils
+        /Mappers
+            /User
+                CreateUserDTOToUser.ts
+        /Services
+            /Email
+                EmailSenderService.ts
+    AppModule.ts
+    Environment.ts
+    main.ts
