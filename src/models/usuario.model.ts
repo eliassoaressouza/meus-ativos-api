@@ -1,5 +1,6 @@
 import { Prop, Schema, SchemaFactory } from '@nestjs/mongoose';
 import { Document } from 'mongoose';
+import { AtivoModel } from './ativo.model';
 
 export type UsuarioDocument = UsuarioModel & Document;
 
@@ -11,5 +12,7 @@ export class UsuarioModel {
   public email: string;
   @Prop()
   public senha: string;
+  @Prop()
+  public ativo: AtivoModel[]=[];
 }
 export const UsuarioSchema = SchemaFactory.createForClass(UsuarioModel);

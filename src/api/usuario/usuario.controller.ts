@@ -1,4 +1,5 @@
-import { Controller, Get, Post } from '@nestjs/common';
+import { Body, Controller, Get, Param, Post } from '@nestjs/common';
+import { AtivoModel } from 'src/models/ativo.model';
 
 import { UsuarioModel } from 'src/models/usuario.model';
 import { UsuarioService } from 'src/service/usuario.service';
@@ -16,15 +17,23 @@ constructor(private usuarioService:UsuarioService){
     const usuario = new UsuarioModel();
     usuario.nome="Roberto";
     usuario.email="eliassoares@gmail.com";
-    await  this.usuarioService.create(usuario);
+    usuario.ativo.push({nome:'Itausa'})
+    await  this.usuarioService.salvarUsuario(usuario);
     return 'teste';
   }
-
-  @Post()
-  login(login: string, senha: string) {
+  /**post: objectid={id:60312249a149de30d07eead2} */
+  @Post('/obter')
+  async obterUsuario(@Body()objectid) {
+   
    
     const usuario = new UsuarioModel();
-    usuario.nome = '44556647';
-    return usuario;
+    usuario.nome="Roberto";
+    usuario.email="eliassoares@gmail.com";
+    usuario.ativo.push({nome:'Itausa'})
+    return await  this.usuarioService.obterUsuarioPeloId(objectid.id);
   }
+
+
+
+
 }
