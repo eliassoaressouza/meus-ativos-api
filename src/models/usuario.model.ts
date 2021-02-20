@@ -13,6 +13,6 @@ export class UsuarioModel {
   @Prop()
   public senha: string;
   @Prop()
-  public ativo: AtivoModel[]=[];
+  public ativos: AtivoModel[]=[];
 }
 export const UsuarioSchema = SchemaFactory.createForClass(UsuarioModel);

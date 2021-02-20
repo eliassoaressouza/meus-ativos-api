@@ -23,6 +23,6 @@ const urlcontainer='mongodb://localhost/meus-ativos';
   imports: [ApiModule,
     MongooseModule.forRoot(urlcontainer,optionscontainer)],
   controllers: [AppController],
-  providers: [AppService, AtivoService],
+  providers: [AppService],
 })
 export class AppModule {}
