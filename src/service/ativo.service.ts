@@ -8,8 +8,12 @@ import { AtivoModel } from 'src/models/ativo.model';
 export class AtivoService {
     constructor(@InjectModel(UsuarioModel.name) private usuarioModel: Model<UsuarioDocument>) {}
 
-    async cadastrarAtivo(usuario_id:string,ativo:AtivoModel): Promise<UsuarioModel[]> {
+    async salvar(usuarioModel:UsuarioModel): Promise<UsuarioModel[]> {
 
-        return this.usuarioModel.updateOne({_id:usuario_id},{$push:{"ativos":ativo}});
+        return this.usuarioModel.updateOne({_id:usuarioModel._id},{$push:{"ativos":usuarioModel.ativos[0]}});
+      }
+      async editar(usuarioModel:UsuarioModel): Promise<UsuarioModel[]> {
+
+        return this.usuarioModel.updateOne({_id:usuarioModel._id},{$set:{"ativos":usuarioModel.ativos}});
       }
 }

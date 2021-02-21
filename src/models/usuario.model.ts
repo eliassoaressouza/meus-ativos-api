@@ -6,6 +6,7 @@ export type UsuarioDocument = UsuarioModel & Document;
 
 @Schema({collection:"usuario"})
 export class UsuarioModel {
+  _id:any;
   @Prop()
   public nome: string;
   @Prop()

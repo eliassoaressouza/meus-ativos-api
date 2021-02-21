@@ -1,16 +1,21 @@
 import { Body, Controller, Post } from '@nestjs/common';
+import { AtivoModel } from 'src/models/ativo.model';
 import { UsuarioModel } from 'src/models/usuario.model';
+import { AtivoService } from 'src/service/ativo.service';
 import { UsuarioService } from 'src/service/usuario.service';
 
 @Controller('ativo')
 export class AtivoController {
-  constructor(private usuarioService: UsuarioService) {}
-  @Post('/obter')
-  async obterUsuario(@Body() objectid) {
-    const usuario = new UsuarioModel();
-    usuario.nome = 'Roberto';
-    usuario.email = 'eliassoares@gmail.com';
-    usuario.ativos.push({ nome: 'Itausa' });
-    return await this.usuarioService.obterUsuarioPeloId(objectid.id);
+  constructor(private ativoService: AtivoService) {}
+  @Post('/salvar')
+  async salvar(@Body() usuarioModel:UsuarioModel) {
+
+    return await this.ativoService.salvar(usuarioModel);
+  }
+  
+  @Post('/editar')
+  async editar(@Body() usuarioModel:UsuarioModel) {
+
+    return await this.ativoService.editar(usuarioModel);
   }
 }
