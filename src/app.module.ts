@@ -27,8 +27,8 @@ import { ConfigModule } from '@nestjs/config';
     ConfigModule.forRoot(),
     ApiModule,
     MongooseModule.forRoot(process.env.URI_MONGO_ATLAS, {
-      user: process.env.USUARIO_BANCO_DADOS_LOCAL,
-      pass: process.env.SENHA_BANCO_DADOS_LOCAL,
+      user: process.env.USUARIO_BANCO_DADOS_ATLAS,
+      pass:  process.env.SENHA_BANCO_DADOS_ATLAS,
     }),
   ],
   controllers: [AppController],
