@@ -15,6 +15,7 @@ export class UsuarioController {
   }
   @Post('/login')
   async login(@Body() usuario) {
+    console.log('login do usuario!!!')
     const usuarioresp = await this.usuarioService.obterUsuarioPeloemailSenha(
       usuario.email,
       usuario.senha,

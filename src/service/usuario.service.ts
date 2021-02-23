@@ -18,9 +18,11 @@ export class UsuarioService {
     return this.usuarioModel.find({_id:usuario_id}).exec();
   }
   async obterUsuarioPeloemailSenha(email:string, senha:string): Promise<UsuarioModel[]> {
+    console.log('obterUsuarioPeloemailSenha')
     const usuario =await this.usuarioModel.find({email,senha}).exec();
 
-    
+    console.log('depois');
+    console.log(usuario);
 
     return usuario;
 
