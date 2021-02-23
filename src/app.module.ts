@@ -4,19 +4,32 @@ import { AppController } from './app.controller';
 import { AppService } from './app.service';
 import { MongooseModule } from '@nestjs/mongoose';
 import { ConfigModule } from '@nestjs/config';
-
-//integracao com o mongodb atlas
-const uriatlas='mongodb+srv://@cluster0.xczai.mongodb.net/meus-ativos?retryWrites=true&w=majority';
-//URILOCAL
-const urilocalcontainer='mongodb://localhost/meus-ativos';
+ function obterAmbiente():{uri,usuario,senha} {
+  let resp = {uri:'',usuario:'',senha:''};
+  if (process.env.AMBIENTE == 'producao') {
+    resp = {
+      uri: process.env.URI_MONGO_ATLAS,
+      usuario: process.env.USUARIO_BANCO_DADOS_ATLAS,
+      senha: process.env.SENHA_BANCO_DADOS_ATLAS,
+    };
+  }else{
+    resp = {
+      uri: process.env.URI_MONGO_LOCAL,
+      usuario: process.env.USUARIO_BANCO_DADOS_LOCAL,
+      senha: process.env.SENHA_BANCO_DADOS_LOCAL,
+    };
+  }
+  return resp;
+};
 @Module({
   imports: [
     ConfigModule.forRoot(),
     ApiModule,
-    MongooseModule.forRoot(process.env.URI_MONGO,{
-      user: process.env.USUARIO_BANCO_DADOS,
-      pass: process.env.SENHA_BANCO_DADOS
-    })],
+    MongooseModule.forRoot(obterAmbiente().uri, {
+      user: obterAmbiente().usuario,
+      pass: obterAmbiente().senha,
+    }),
+  ],
   controllers: [AppController],
   providers: [AppService],
 })
