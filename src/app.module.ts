@@ -19,6 +19,7 @@ import { ConfigModule } from '@nestjs/config';
       senha: process.env.SENHA_BANCO_DADOS_LOCAL,
     };
   }
+  console.log(resp);
   return resp;
 };
 @Module({
