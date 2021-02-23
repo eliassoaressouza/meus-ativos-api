@@ -3,25 +3,20 @@ import { ApiModule } from './api/api.module';
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
 import { MongooseModule } from '@nestjs/mongoose';
-import { AtivoService } from './service/ativo.service';
-
+import { ConfigModule } from '@nestjs/config';
 
 //integracao com o mongodb atlas
-const optionsatlas = {
-  user: 'sistema-ess',
-  pass: '12345t'
-}
-const urlatlas='mongodb+srv://@cluster0.xczai.mongodb.net/meus-ativos?retryWrites=true&w=majority';
-
-
-const optionscontainer = {
-  user: 'mongoess2',
-  pass: 'e55tt6'
-}
-const urlcontainer='mongodb://localhost/meus-ativos';
+const uriatlas='mongodb+srv://@cluster0.xczai.mongodb.net/meus-ativos?retryWrites=true&w=majority';
+//URILOCAL
+const urilocalcontainer='mongodb://localhost/meus-ativos';
 @Module({
-  imports: [ApiModule,
-    MongooseModule.forRoot(urlcontainer,optionscontainer)],
+  imports: [
+    ConfigModule.forRoot(),
+    ApiModule,
+    MongooseModule.forRoot(process.env.URI_MONGO,{
+      user: process.env.USUARIO_BANCO_DADOS,
+      pass: process.env.SENHA_BANCO_DADOS
+    })],
   controllers: [AppController],
   providers: [AppService],
 })
