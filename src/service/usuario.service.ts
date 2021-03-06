@@ -2,7 +2,7 @@ import { Model } from 'mongoose';
 import { Injectable } from '@nestjs/common';
 import { InjectModel } from '@nestjs/mongoose';
 import { UsuarioDocument, UsuarioModel } from 'src/models/usuario.model';
-import { ErrorModel } from 'src/models/error.model';
+
 
 @Injectable()
 export class UsuarioService {
@@ -14,16 +14,11 @@ export class UsuarioService {
      return resp;
   }
 
-  async obterUsuarioPeloId(usuario_id:string): Promise<UsuarioModel[]> {
-    return this.usuarioModel.find({_id:usuario_id}).exec();
+  async obterUsuario(UsuarioModel): Promise<UsuarioModel[]> {
+    return this.usuarioModel.find(UsuarioModel).exec();
   }
   async obterUsuarioPeloemailSenha(email:string, senha:string): Promise<UsuarioModel[]> {
-    console.log('obterUsuarioPeloemailSenha')
     const usuario =await this.usuarioModel.find({email,senha}).exec();
-
-    console.log('depois');
-    console.log(usuario);
-
     return usuario;
 
 

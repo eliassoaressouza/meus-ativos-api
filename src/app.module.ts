@@ -4,6 +4,10 @@ import { AppController } from './app.controller';
 import { AppService } from './app.service';
 import { MongooseModule } from '@nestjs/mongoose';
 import { ConfigModule } from '@nestjs/config';
+import { AuthModule } from './auth/auth.module';
+import { UsersModule } from './users/users.module';
+
+
  function obterAmbiente():{uri,usuario,senha} {
   let resp = {uri:'',usuario:'',senha:''};
   if (process.env.AMBIENTE == 'producao') {
@@ -19,17 +23,20 @@ import { ConfigModule } from '@nestjs/config';
       senha: process.env.SENHA_BANCO_DADOS_LOCAL,
     };
   }
-  console.log(resp);
+ 
   return resp;
 };
 @Module({
   imports: [
-    ConfigModule.forRoot(),
     ApiModule,
-    MongooseModule.forRoot(process.env.URI_MONGO_ATLAS, {
-      user: process.env.USUARIO_BANCO_DADOS_ATLAS,
-      pass:  process.env.SENHA_BANCO_DADOS_ATLAS,
+    AuthModule, UsersModule,
+    ConfigModule.forRoot(),
+    
+    MongooseModule.forRoot(obterAmbiente().uri, {
+      user: obterAmbiente().usuario,
+      pass:  obterAmbiente().senha,
     }),
+  
   ],
   controllers: [AppController],
   providers: [AppService],

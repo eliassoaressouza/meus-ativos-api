@@ -1,8 +1,7 @@
-import { Body, Controller, Get, HttpException, HttpStatus, Post, Res } from '@nestjs/common';
+import { Body, Controller, Get, HttpException, HttpStatus, Post, Res, UseGuards } from '@nestjs/common';
 import { UsuarioModel } from 'src/models/usuario.model';
 import { UsuarioService } from 'src/service/usuario.service';
-import { Response } from 'express';
-import { ApiUtils } from './api.utils';
+import { AuthGuard } from '@nestjs/passport';
 @Controller('usuario')
 export class UsuarioController {
   constructor(private usuarioService: UsuarioService) {}
@@ -27,8 +26,22 @@ export class UsuarioController {
     
     return usuarioresp;
   }
+  /**
+   * 
+   * @param usuario 
+   * obter pelo json:
+   * {
+  "ativos": [],
+  "_id": "60438e25fd4c0738e092e0aa",
+  "email": "mariaj@gmail.com",
+  "senha": "3e4r5tttt",
+  "nome": "Maria Josefina",
+  "__v": 0
+}
+   */
+  @UseGuards(AuthGuard('local'))
   @Post('/obter')
-  async salvar(@Body() objectid) {
-    return await this.usuarioService.obterUsuarioPeloId(objectid.id);
+  async salvar(@Body() usuario: UsuarioModel) {
+    return await this.usuarioService.obterUsuario(usuario);
   }
 }

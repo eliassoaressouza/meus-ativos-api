@@ -19,4 +19,5 @@ export class AtivoController {
     return await this.ativoService.editar(usuarioModel);
   }
   
+  
 }
