@@ -2,6 +2,7 @@ import { Body, Controller, Get, HttpException, HttpStatus, Post, Res, UseGuards 
 import { UsuarioModel } from 'src/models/usuario.model';
 import { UsuarioService } from 'src/service/usuario.service';
 import { AuthGuard } from '@nestjs/passport';
+import { JwtAuthGuard } from 'src/auth/guards/jwt-auth.guard';
 @Controller('usuario')
 export class UsuarioController {
   constructor(private usuarioService: UsuarioService) {}
@@ -39,7 +40,7 @@ export class UsuarioController {
   "__v": 0
 }
    */
-  @UseGuards(AuthGuard('local'))
+  @UseGuards(JwtAuthGuard)
   @Post('/obter')
   async salvar(@Body() usuario: UsuarioModel) {
     return await this.usuarioService.obterUsuario(usuario);
