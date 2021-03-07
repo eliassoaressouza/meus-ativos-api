@@ -10,7 +10,7 @@ import { UsersModule } from './users/users.module';
 
  function obterAmbiente():{uri,usuario,senha} {
   let resp = {uri:'',usuario:'',senha:''};
-  if (process.env.AMBIENTE == 'producao') {
+  if (process.env.NODE_ENV == 'production') {
     resp = {
       uri: process.env.URI_MONGO_ATLAS,
       usuario: process.env.USUARIO_BANCO_DADOS_ATLAS,
