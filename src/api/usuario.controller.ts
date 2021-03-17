@@ -1,6 +1,6 @@
 import { Body, Controller, Get, HttpException, HttpStatus, Post, Res, UseGuards } from '@nestjs/common';
 import { UsuarioModel } from 'src/models/usuario.model';
-import { UsuarioService } from 'src/service/usuario.service';
+import { UsuarioService } from 'src/service/usuario/usuario.service';
 import { AuthGuard } from '@nestjs/passport';
 import { JwtAuthGuard } from 'src/auth/guards/jwt-auth.guard';
 @Controller('usuario')

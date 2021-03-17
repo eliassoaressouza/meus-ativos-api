@@ -4,11 +4,19 @@ import { UsuarioController } from './usuario.controller';
 import { MongooseModule } from '@nestjs/mongoose';
 import { UsuarioModel, UsuarioSchema } from 'src/models/usuario.model';
 import { AtivoController } from './ativo.controller';
-import { AtivoService } from 'src/service/ativo.service';
-import { UsuarioService } from 'src/service/usuario.service';
+import { AtivoService } from 'src/service/ativo/ativo.service';
+import { UsuarioService } from 'src/service/usuario/usuario.service';
+import { AtivoModel, AtivosSchema } from 'src/models/ativo.model';
+import { UtilsModule } from 'src/service/utils/utils.module';
+import { AuthModule } from 'src/auth/auth.module';
+
+
+
 
 @Module({
-  imports: [MongooseModule.forFeature([{ name: UsuarioModel.name, schema: UsuarioSchema }])],
+  imports: [MongooseModule.forFeature([{ name: UsuarioModel.name, schema: UsuarioSchema }]),
+  MongooseModule.forFeature([{ name: AtivoModel.name, schema: AtivosSchema }]),AuthModule],
+  
   providers: [UsuarioService,AtivoService],
   controllers: [UsuarioController, AtivoController]
 })

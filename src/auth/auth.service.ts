@@ -1,5 +1,5 @@
 import { Injectable } from '@nestjs/common';
-import { UsersService } from '../users/users.service';
+import { UsersService } from '../service/usuario/users.service';
 import { JwtService } from '@nestjs/jwt';
 import { UsuarioModel } from 'src/models/usuario.model';
 
@@ -29,4 +29,16 @@ export class AuthService {
       access_token: this.jwtService.sign(payload),
     };
   }
+  decodeJwt(auth: string): {id: string}{
+    const jwt = auth.replace('Bearer ', '');
+    return this.jwtService.decode(jwt, { json: true }) as { id: string };
+    
+}
+ObterIdUsuario(authJwt: string):string{
+
+  return this.decodeJwt(authJwt).id;
+}
+
+
+
 }
