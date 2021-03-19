@@ -20,6 +20,7 @@ export class UsuarioController {
       usuario.email,
       usuario.senha,
     );
+    console.log(usuarioresp)
     if (!usuarioresp.length) {
       throw new HttpException("Usuario não encontrado", HttpStatus.CONFLICT);
     

@@ -9,7 +9,7 @@ import { UsersModule } from './service/usuario/users.module';
 import { AtivosModule } from './service/ativo/ativo.module';
 
 
- function obterAmbiente():{uri,usuario,senha} {
+ export function obterAmbiente():{uri,usuario,senha} {
   let resp = {uri:'',usuario:'',senha:''};
   if (process.env.NODE_ENV == 'production') {
     resp = {
