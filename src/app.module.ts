@@ -7,6 +7,8 @@ import { ConfigModule } from '@nestjs/config';
 import { AuthModule } from './auth/auth.module';
 import { UsersModule } from './service/usuario/users.module';
 import { AtivosModule } from './service/ativo/ativo.module';
+import { ClassificacaoModule } from './service/classificacao/classificacao.module';
+
 
 
  export function obterAmbiente():{uri,usuario,senha} {
@@ -33,6 +35,7 @@ import { AtivosModule } from './service/ativo/ativo.module';
     AuthModule, 
     UsersModule,
     AtivosModule,
+    ClassificacaoModule,
     ConfigModule.forRoot(),
     MongooseModule.forRoot(obterAmbiente().uri, {
       user: obterAmbiente().usuario,
