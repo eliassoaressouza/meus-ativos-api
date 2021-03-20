@@ -26,7 +26,13 @@ export class AtivoService {
   async editar(ativoModel: AtivoModel): Promise<AtivoModel[]> {
     return this.ativoModel.updateOne(
       { _id: ativoModel._id },
-      { $set: { descricao: ativoModel.descricao,nome:ativoModel.nome } },
+      {
+        $set: {
+          descricao: ativoModel.descricao,
+          nome: ativoModel.nome,
+          quantidade: ativoModel.quantidade,
+        },
+      },
     );
   }
   async excluir(_id: string): Promise<AtivoModel[]> {

@@ -33,7 +33,6 @@ export class AtivoController {
     @Headers('Authorization') auth: string,
   ) {
     ativoModel.idusuario = this.authService.ObterIdUsuario(auth);
-
     return await this.ativoService.salvar(ativoModel);
   }
 
@@ -48,8 +47,6 @@ export class AtivoController {
   @UseGuards(JwtAuthGuard)
   @Post('/excluir')
   async excluir(@Body() id: any) {
-    const id6 = id;
-
-    return await this.ativoService.excluir(id);
+       return await this.ativoService.excluir(id);
   }
 }

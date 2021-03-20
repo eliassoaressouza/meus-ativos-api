@@ -10,6 +10,8 @@ export class AtivoModel {
   @Prop()
   public nome: string;
   @Prop()
+  quantidade:number;
+  @Prop()
   public descricao: string;
   @Prop()
   idusuario: string;
