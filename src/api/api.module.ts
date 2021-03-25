@@ -7,7 +7,6 @@ import { AtivoController } from './ativo.controller';
 import { AtivoService } from 'src/service/ativo/ativo.service';
 import { UsuarioService } from 'src/service/usuario/usuario.service';
 import { AtivoModel, AtivosSchema } from 'src/models/ativo.model';
-import { UtilsModule } from 'src/service/utils/utils.module';
 import { AuthModule } from 'src/auth/auth.module';
 import { ClassificacaoService } from 'src/service/classificacao/classificacao.service';
 import { ClassificacaoModel, ClassificacaoSchema } from 'src/models/Classificacao.model';
