@@ -28,7 +28,7 @@ export class ClassificacaoService {
       { _id: ClassificacaoModel._id },
       {
         $set: {
-          descricao: ClassificacaoModel.tipo,
+          tipo: ClassificacaoModel.tipo,
           nome: ClassificacaoModel.nome
         },
       },

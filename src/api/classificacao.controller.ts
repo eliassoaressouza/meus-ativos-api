@@ -32,7 +32,6 @@ export class ClassificacaoController {
     @Body() ClassificacaoModel: ClassificacaoModel,
     @Headers('Authorization') auth: string,
   ) {
-    
     return await this.ClassificacaoService.salvar(ClassificacaoModel);
   }
 
@@ -47,6 +46,6 @@ export class ClassificacaoController {
   @UseGuards(JwtAuthGuard)
   @Post('/excluir')
   async excluir(@Body() id: any) {
-       return await this.ClassificacaoService.excluir(id);
+    return await this.ClassificacaoService.excluir(id);
   }
 }
