@@ -9,8 +9,8 @@ import {
 } from '@nestjs/common';
 import { AuthService } from 'src/auth/auth.service';
 import { JwtAuthGuard } from 'src/auth/guards/jwt-auth.guard';
-import { ClassificacaoModel } from 'src/models/Classificacao.model';
-import { ClassificacaoService } from 'src/service/Classificacao/Classificacao.service';
+import { ClassificacaoModel } from 'src/models/classificacao.model';
+import { ClassificacaoService } from 'src/service/classificacao/classificacao.service';
 
 @Controller('classificacao')
 export class ClassificacaoController {

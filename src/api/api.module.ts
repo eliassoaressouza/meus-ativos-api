@@ -12,7 +12,7 @@ import { ClassificacaoService } from 'src/service/classificacao/classificacao.se
 import {
   ClassificacaoModel,
   ClassificacaoSchema,
-} from 'src/models/Classificacao.model';
+} from 'src/models/classificacao.model';
 import { ClassificacaoController } from './classificacao.controller';
 import { ClassificacaoModule } from 'src/service/classificacao/classificacao.module';
 
