@@ -1,7 +1,7 @@
 import { Model } from 'mongoose';
 import { Injectable } from '@nestjs/common';
 import { InjectModel } from '@nestjs/mongoose';
-import { ClassificacaoDocument, ClassificacaoModel } from 'src/models/Classificacao.model';
+import { ClassificacaoDocument, ClassificacaoModel } from 'src/models/classificacao.model';
 
 
 @Injectable()
