@@ -1,5 +1,6 @@
 import { Prop, Schema, SchemaFactory } from '@nestjs/mongoose';
 import { Document,Schema as SchemaMongose  } from 'mongoose';
+import { ClassificacaoModel } from './classificacao.model';
 
 
 export type AtivoDocument = AtivoModel & Document;
@@ -16,6 +17,11 @@ export class AtivoModel {
   @Prop()
   idusuario: string;
   //idusuario: [{ type: SchemaMongose.Types.ObjectId, ref: 'usuario'}]
+  @Prop()
+  classificacao: [];
+
 
 }
+
+
 export const AtivosSchema = SchemaFactory.createForClass(AtivoModel);
