@@ -15,6 +15,9 @@ import {
 } from 'src/models/classificacao.model';
 import { ClassificacaoController } from './classificacao.controller';
 import { ClassificacaoModule } from 'src/service/classificacao/classificacao.module';
+import { CotacaoService } from 'src/service/cotacao/cotacao.service';
+import { CotacaoController } from './cotacao.controller';
+import { CotacaoModel, CotacaoSchema } from 'src/models/cotacao.model';
 
 @Module({
   imports: [
@@ -28,10 +31,13 @@ import { ClassificacaoModule } from 'src/service/classificacao/classificacao.mod
     MongooseModule.forFeature([
       { name: ClassificacaoModel.name, schema: ClassificacaoSchema },
     ]),
+    MongooseModule.forFeature([
+      { name: CotacaoModel.name, schema: CotacaoSchema },
+    ]),
     AuthModule,
   ],
 
-  providers: [UsuarioService, AtivoService, ClassificacaoService],
-  controllers: [UsuarioController, AtivoController, ClassificacaoController],
+  providers: [UsuarioService, AtivoService, ClassificacaoService,CotacaoService],
+  controllers: [UsuarioController, AtivoController, ClassificacaoController,CotacaoController],
 })
 export class ApiModule {}

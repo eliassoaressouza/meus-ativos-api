@@ -1,6 +1,5 @@
 import { Prop, Schema, SchemaFactory } from '@nestjs/mongoose';
 import { Document,Schema as SchemaMongose  } from 'mongoose';
-import { ClassificacaoModel } from './classificacao.model';
 
 
 export type AtivoDocument = AtivoModel & Document;
