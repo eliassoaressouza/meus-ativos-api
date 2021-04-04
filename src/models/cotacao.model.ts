@@ -6,9 +6,9 @@ export type CotacaoDocument = CotacaoModel & Document;
 export class CotacaoModel {
   _id:any;
   @Prop()
-  public nome: string;
+  public Ativo: string;
   @Prop()
-  valor:number;
+  Cotacao:string;
 }
 
 

@@ -3,7 +3,7 @@
 
 npm run start:dev
 
-para atualizar o serviço de cotação importe os dados para .csv utilizando =GOOGLEFINANCE(A2) :
 
+para atualizar o serviço de cotação importe os dados para .csv utilizando =GOOGLEFINANCE(A2) :
 Ativo	Cotacao
 XPML11	R$ 103,50
