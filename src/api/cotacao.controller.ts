@@ -17,6 +17,7 @@ export class CotacaoController {
     const idusuario = this.authService.ObterIdUsuario(auth);
     return await this.CotacaoService.obter();
   }
+  @UseGuards(JwtAuthGuard)
   @Post('/salvareditar')
   async salvareditar( @Body() listaCotacao: CotacaoModel[]) {
   
